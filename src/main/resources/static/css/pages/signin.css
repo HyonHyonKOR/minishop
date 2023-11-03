@@ -1,0 +1,61 @@
+#signin__main {
+  display: flex;
+  justify-content: center;
+}
+.signin__container {
+  margin: 8rem 0 2rem 0;
+  gap: 1rem;
+}
+.signin__header {
+  text-align: center;
+}
+.signin__form {
+  width: 90%;
+}
+.inputs.inputs--signin {
+  border: 0.09375rem solid var(--color-mint--variant);
+}
+.inputs.inputs--signin:hover {
+  background-color: var(--color-mint--variant);
+}
+.inputs.inputs--signin:focus {
+  background-color: var(--color-mint);
+  transform: scale(1.005);
+  color: var(--color-white);
+}
+
+.signin__buttons {
+  width: 60%;
+}
+
+.btns.btns--addMember {
+  width: 100%;
+  background-color: var(--color-mint--variant);
+}
+
+.divider--pink {
+  background-color: var(--color-pink);
+}
+
+@media screen and (max-width: 768px) {
+  .signin__container {
+    margin-top: 2rem;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    min-width: 350px;
+    width: 50%;
+  }
+
+  .signin__smile {
+    font-size: 5em;
+    margin-top: 1rem;
+  }
+
+  .signin__title {
+    font-weight: 400;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+}

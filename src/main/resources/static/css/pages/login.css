@@ -1,0 +1,76 @@
+#login__body{
+  height: 100vh;
+}
+#login__main {
+  display: flex;
+  justify-content: center;
+  height: 87vh;
+}
+.login__header{
+  text-align: center;
+}
+.login__smile {
+  color: var(--color-pink);
+  font-size: 5rem;
+  margin-top: 5.5rem;
+}
+
+.login__form {
+  width: 90%;
+}
+
+.inputs.inputs--login{
+  width: 100%;
+}
+
+.login__buttons{
+  width: 50%;
+}
+
+.btns.btns--login{
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.btns.btns--signin{
+  width: 100%;
+  background-color:var(--color-white);
+  color: var(--color-pink);
+  border: 0.075rem solid var(--color-pink);
+}
+
+.btns.btns--login:hover{
+  background-color:var(--color-mint);
+}
+.btns.btns--signin:hover{
+  background-color: var(--color-pink);
+  color: var(--color-white);
+}
+
+@media screen and (max-width: 768px) {
+  #login__main {
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+  }
+
+  .login__container {
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    min-width: 350px;
+    width: 50%;
+    gap: 3rem;
+  }
+
+  .login__smile {
+    font-size: 5em;
+    margin-top: 1rem;
+  }
+
+  .label__title.label--login {
+    font-weight: 400;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+}

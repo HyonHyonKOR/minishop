@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+  <head>
+    <!--웹 호환성 및 반응형 웹 -->
+    <title>INPP - 회원가입</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--SEO-->
+    <meta name="description" content="" />
+    <meta name="author" content="hyonhyon" />
+    <meta
+      name="keywords"
+      content="male e-commerce,shopping,male,unique,남자 쇼핑몰,대학생 쇼핑몰"
+    />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <!--OG (Open Graph Data)-->
+    <meta property="og:title" content="HyonHyon" />
+    <meta property="og:type" content="Website" />
+    <meta property="og:url" content="배포후 생성된 URL" />
+    <meta property="og:image" content="배포후에 생성된 이미지 URL" />
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600&family=Sometype+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/459e14b80c.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--css-->
+    <link rel="stylesheet" href="/css/style.css?ver=1" />
+    <!--javascript-->
+    <script src="/js/addForm.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="header__logo">
+        <a href="/"
+          ><img
+            class="header__logo__img"
+            src="/images/favicon.png"
+            alt="shopping mall logo"
+        /></a>
+      </div>
+      <div class="divider divider--white"></div>
+      <div class="divider divider--pink"></div>
+    </header>
+    <main id="signin__main">
+      <section class="forms__container signin__container">
+        <div class="signin__header">
+          <h1>Let's get started!</h1>
+        </div>
+        <form
+          id="member"
+          action
+          method="post"
+          class="signin__form"
+          th:object="${memberAddForm}"
+        >
+          <label for="memberId" class="labels">
+            <h3 class="label__title label--signin">아이디</h3>
+            <input
+              name="memberId"
+              id="memberId"
+              th:field="*{memberId}"
+              th:errorclass="field-error"
+              type="text"
+              class="inputs inputs--signin"
+              placeholder="영문, 숫자 (5~20자)"
+              autocomplete="off"
+            />
+            <div class="error__message__container">
+              <div class="error__message field-error" th:errors="*{memberId}" th:if="${#fields.hasErrors('memberId')}"></div>
+            </div>
+          </label>
+          <label for="memberPw" class="signin__label">
+            <h3 class="label__title label--signin">비밀번호</h3>
+            <input
+              name="memberPw"
+              id="memberPw"
+              th:field="*{memberPw}"
+              th:errorclass="field-error"
+              type="password"
+              class="inputs inputs--signin"
+              placeholder="영문, 숫자 조합 (8~20자)"
+              autocomplete="off"
+            />
+            <div class="error__message__container">
+            <div class="error__message field-error" th:errors="*{memberPw}"></div>
+            </div>
+          </label>
+          <label for="memberPw2" class="signin__label">
+            <h3 class="label__title label--signin">비밀번호 확인</h3>
+            <input
+              name="memberPw2"
+              id="memberPw2"
+              th:field="*{memberPw2}"
+              th:errorclass="field-error"
+              type="password"
+              class="inputs inputs--signin"
+              placeholder="영문, 숫자 조합 (8~20자)"
+              autocomplete="off"
+            />
+            <div class="error__message__container">
+            <div class="error__message field-error" th:errors="*{memberPw2}" th:if="${#fields.hasErrors('memberPw2')}">
+            </div>
+            </div>
+          </label>
+          <label for="memberName" class="signin__label">
+            <h3 class="label__title label--signin">이름</h3>
+            <input
+                    name="memberName"
+                    id="memberName"
+                    th:field="*{memberName}"
+                    th:errorclass="field-error"
+                    type="text"
+                    class="inputs inputs--signin"
+                    placeholder="한글, 영문 가능"
+                    autocomplete="off"
+            />
+          </label>
+          <div class="error__message__container">
+            <div class="error__message field-error" th:errors="*{memberName}"></div>
+          </div>
+          <label for="memberEmail" class="signin__label">
+            <h3 class="label__title label--signin">이메일</h3>
+            <input
+              name="memberEmail"
+              id="memberEmail"
+              th:field="*{memberEmail}"
+              th:errorclass="field-error"
+              type="text"
+              class="inputs inputs--signin"
+              placeholder="ex) inpp@gmail.com"
+              autocomplete="off"
+            />
+            <div class="error__message__container">
+            <div class="error__message field-error" th:errors="*{memberEmail}"></div>
+            </div>
+          </label>
+          <label for="memberHp" class="signin__label">
+            <h3 class="label__title label--signin">휴대폰 번호</h3>
+            <input
+              name="memberHp"
+              id="memberHp"
+              th:field="*{memberHp}"
+              th:errorclass="field-error"
+              type="text"
+              class="inputs inputs--signin"
+              placeholder="-없이 입력 ex)01011111111 "
+              autocomplete="off"
+            />
+            <div class="error__message__container">
+            <div class="error__message field-error" th:errors="*{memberHp}">
+            </div>
+            </div>
+          </label>
+          <label for="memberAddress1" class="signin__label">
+            <h3 class="label__title label--signin">우편번호</h3>
+            <input
+              name="memberAddress1"
+              id="memberAddress1"
+              th:field="*{memberAddress1}"
+              th:errorclass="field-error"
+              type="text"
+              placeholder="숫자 5~10자 "
+              class="inputs inputs--signin"
+              autocomplete="off"
+            />
+            <div class="error__message__container">
+            <div class="error__message field-error" th:errors="*{memberAddress1}">
+            </div>
+            </div>
+          </label>
+          <label for="memberAddress2" class="signin__label">
+            <h3 class="label__title label--signin">기본 주소</h3>
+            <input
+              name="memberAddress2"
+              id="memberAddress2"
+              th:field="*{memberAddress2}"
+              th:errorclass="field-error"
+              type="text"
+              class="inputs inputs--signin"
+              placeholder="최대 100자"
+              autocomplete="off"
+            />
+            <div class="error__message__container">
+            <div class="error__message field-error" th:errors="*{memberAddress2}"></div>
+            </div>
+          </label>
+          <label for="memberAddress3" class="signin__label">
+            <h3 class="label__title label--signin">상세주소</h3>
+            <input
+              name="memberAddress3"
+              id="memberAddress3"
+              th:field="*{memberAddress3}"
+              type="text"
+              class="inputs inputs--signin"
+              placeholder="자유 입력(생략 가능)"
+              autocomplete="off"
+            />
+          </label>
+        </form>
+        <div class="signin__buttons">
+          <button type="submit" class="btns btns--addMember" form="member">
+            가입하기
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer id="contact">
+      <div class="divider divider--white"></div>
+      <div class="divider divider--pink"></div>
+      <p class="footer__copyright">
+        Copyright © HyonHyonKOR. All Rights Reserved.
+      </p>
+    </footer>
+  </body>
+</html>

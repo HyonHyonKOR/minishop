@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyon01.minishop.domain.member.MemberMapper">
+    <insert id="save" parameterType="com.hyon01.minishop.domain.member.Member">
+        insert into INNP_MEMBER values (#{memberId},#{memberPw},#{memberName},#{memberEmail},#{memberHp},#{memberAddress1},#{memberAddress2},#{memberAddress3},0,sysdate,0,0)
+    </insert>
+
+    <select id="findById" resultType="com.hyon01.minishop.domain.member.Member">
+        select * from INNP_MEMBER where MEMBER_ID = #{memberId}
+    </select>
+
+    <update id="update" parameterType="com.hyon01.minishop.domain.member.Member">
+        UPDATE INNP_MEMBER
+        SET
+            member_pw = #{memberPw},
+            member_name = #{memberName},
+            member_email = #{memberEmail},
+            member_hp = #{memberHp},
+            member_address1 = #{memberAddress1},
+            member_address2 = #{memberAddress2},
+            member_address3 = #{memberAddress3},
+            member_account = #{memberAccount},
+            member_point = #{memberPoint}
+        WHERE member_id = #{memberId}
+    </update>
+
+    <delete id="deleteById" parameterType="com.hyon01.minishop.domain.member.Member">
+        delete from INNP_MEMBER where MEMBER_ID = #{memberId}
+    </delete>
+
+</mapper>

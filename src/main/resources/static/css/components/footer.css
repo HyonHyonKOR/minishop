@@ -1,0 +1,21 @@
+footer {
+  padding: 1rem 3rem;
+  text-align: center;
+  color: var(--color-mint);
+}
+.footer__title {
+  padding: 3rem;
+}
+.contact__links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+.contact__link {
+  color: var(--color-pink);
+  font-size: 2rem;
+}
+.footer__copyright {
+  color: var(--color-black);
+}

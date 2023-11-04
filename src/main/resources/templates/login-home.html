@@ -79,8 +79,9 @@
                 ><i class="fa-solid fa-shirt"></i></a>
             </li>
             <li>
-
-                <a class="header__menu__user" th:href="@{|/members/${member.memberId}/update|}" href="/update"><i class="fa-solid fa-user"></i
+                <a class="header__menu__user" th:if="${member.getMemberLevel()==0}" th:href="@{|/members/admin/members|}" href="/update"><i class="fa-solid fa-user"></i
+                ></a>
+                <a class="header__menu__user" th:unless="${member.getMemberLevel()==0}"  th:href="@{|/members/${member.memberId}/update|}" href="/update"><i class="fa-solid fa-user"></i
                 ></a>
             </li>
             <li>

@@ -35,14 +35,14 @@ public class MemberServiceImpl implements MemberService{
     @Override
     @Transactional
     public void updateInfo(Member member) {
-        log.info("서비스 진입 : {}", member);
+        log.info("{} 서비스 진입 ", member.getMemberId());
         memberRepository.update(member);
     }
 
     @Override
     @Transactional
     public void withdraw(String memberId, String memberPw) {
-        log.info("서비스 진입 : {}", memberId);
+        log.info("{} 서비스 진입 ", memberId);
         Optional<Member> entity = memberRepository.findById(memberId)
                 .filter(m -> m.getMemberPw().equals(memberPw));
         entity.ifPresentOrElse(

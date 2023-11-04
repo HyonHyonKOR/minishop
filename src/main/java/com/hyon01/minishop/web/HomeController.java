@@ -17,14 +17,9 @@ public class HomeController {
             return "home";
         }
 
-        ///회원 세션이 유지되면 회원 전용 홈으로 이동
-        if(loginMember.getMemberLevel()==1){
-            model.addAttribute("member",loginMember);
-            return "login-home";
-        }
-
-        //관리자 세션이 유지되면 관리자 전용 홈으로 이동
+        ///회원 세션이 회원 전용 홈으로 이동
         model.addAttribute("member",loginMember);
-        return "admin-home";
+        return "login-home";
+
     }
 }

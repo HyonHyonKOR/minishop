@@ -19,7 +19,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
 
         if(session == null || session.getAttribute("loginMember") == null){
-            log.info("미인증 사용차 요청");
+            log.warn("미인증 사용차 요청");
             //로그인으로 redirect
             response.sendRedirect("/login?redirectURL=" + requestURI);
             return false;

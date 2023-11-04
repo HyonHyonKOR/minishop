@@ -38,11 +38,11 @@ public class MemberController {
         }
             //필드 에러1 (비밀번호와 비밀번호 확인이 일치하지 않는 경우)
         if (!memberAddForm.getMemberPw().equals(memberAddForm.getMemberPw2())) {
-            bindingResult.rejectValue("memberPw2", "비밀번호가 일치하지 않습니다.");
+            bindingResult.rejectValue("memberPw2",null, "비밀번호가 일치하지 않습니다.");
             return "members/addForm";
         }
 
-            log.info("컨트롤러 진입 : {}", memberAddForm);
+            log.info("{} 컨트롤러 진입 ", memberAddForm);
             Member member = memberConverter.addFormToMember(memberAddForm);
 
             //예외 처리 (중복 아이디 처리)
@@ -77,11 +77,11 @@ public class MemberController {
         }
         //필드 에러1 (비밀번호와 비밀번호 확인이 일치하지 않는 경우)
         if (!memberUpdateForm.getMemberPw().equals(memberUpdateForm.getMemberPw2())) {
-            bindingResult.rejectValue("memberPw2",  "비밀번호가 일치하지 않습니다.");
+            bindingResult.rejectValue("memberPw2", null,"비밀번호가 일치하지 않습니다.");
             return "members/updateForm";
         }
 
-        log.info("컨트롤러 진입 : {}", memberUpdateForm);
+        log.info("{} 컨트롤러 진입 ", memberUpdateForm);
         Member member = memberConverter.updateFormToMember(memberUpdateForm);
 
         memberService.updateInfo(member);
@@ -106,12 +106,12 @@ public class MemberController {
         }
         //필드 에러1 (비밀번호와 비밀번호 확인이 일치하지 않는 경우)
         if (!memberDeleteForm.getMemberPw().equals(memberDeleteForm.getMemberPw2())) {
-            bindingResult.rejectValue("memberPw2", "비밀번호가 일치하지 않습니다.");
+            bindingResult.rejectValue("memberPw2",null, "비밀번호가 일치하지 않습니다.");
             return "members/deleteForm";
         }
 
 
-            log.info("컨트롤러 진입 : {}", memberDeleteForm);
+            log.info("{} 컨트롤러 진입 ", memberDeleteForm);
 
         //예외 처리 (회원 아이디의 비밀번호가 일치하지 않을 경우)
             try {
@@ -134,7 +134,7 @@ public class MemberController {
  
 
     @GetMapping(value ="/admin/members")
-    public String goTomemberListPage(){
+    public String goToMemberListPage(){
         return "members/memberList";
     }
 

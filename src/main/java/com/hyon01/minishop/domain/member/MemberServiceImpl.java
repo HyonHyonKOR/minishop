@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -49,6 +50,12 @@ public class MemberServiceImpl implements MemberService{
                 member -> memberRepository.deleteById(memberId),
                 () -> { throw new IllegalStateException("비밀번호가 일치하지 않습니다."); }
         );
+    }
+
+    @Override
+    public List<Member> findAllMembers() {
+        log.info("회원목록 조회 서비스 진입 ");
+        return memberRepository.findAll();
     }
 
 

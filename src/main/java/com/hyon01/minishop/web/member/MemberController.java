@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -134,7 +135,9 @@ public class MemberController {
  
 
     @GetMapping(value ="/admin/members")
-    public String goToMemberListPage(){
+    public String goToMemberListPage(Model model){
+        List<Member> members = memberService.findAllMembers();
+        model.addAttribute("members", members);
         return "members/memberList";
     }
 

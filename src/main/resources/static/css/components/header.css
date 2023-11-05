@@ -2,6 +2,7 @@ header {
   width: 100%;
   position: fixed;
   font-family: 'Sometype Mono', monospace;
+  z-index: 1;
 }
 .header__logo {
   text-align: center;

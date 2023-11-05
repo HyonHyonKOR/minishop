@@ -1,6 +1,8 @@
 package com.hyon01.minishop.domain.member;
 
 
+import java.util.List;
+
 public interface MemberService {
 
    void join(Member member);
@@ -11,4 +13,5 @@ public interface MemberService {
 
    void withdraw(String memberId, String memberPw);
 
+   List<Member> findAllMembers();
 }

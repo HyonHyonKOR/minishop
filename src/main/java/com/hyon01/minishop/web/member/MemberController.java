@@ -24,8 +24,8 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping(value = "/add")
-    public String goToSignInPage(Model model){
-        model.addAttribute("memberAddForm",new MemberAddForm());
+    public String goToSignInPage(Model model) {
+        model.addAttribute("memberAddForm", new MemberAddForm());
         return "members/addForm";
     }
 
@@ -37,34 +37,34 @@ public class MemberController {
             log.info("errors={}", bindingResult);
             return "members/addForm";
         }
-            //필드 에러1 (비밀번호와 비밀번호 확인이 일치하지 않는 경우)
+        //필드 에러1 (비밀번호와 비밀번호 확인이 일치하지 않는 경우)
         if (!memberAddForm.getMemberPw().equals(memberAddForm.getMemberPw2())) {
-            bindingResult.rejectValue("memberPw2",null, "비밀번호가 일치하지 않습니다.");
+            bindingResult.rejectValue("memberPw2", null, "비밀번호가 일치하지 않습니다.");
             return "members/addForm";
         }
 
-            log.info("{} 컨트롤러 진입 ", memberAddForm);
-            Member member = memberConverter.addFormToMember(memberAddForm);
+        log.info("{} 컨트롤러 진입 ", memberAddForm);
+        Member member = memberConverter.addFormToMember(memberAddForm);
 
-            //예외 처리 (중복 아이디 처리)
-            try {
-                memberService.join(member);
-                return "redirect:/members/addSuccess";
-            } catch (IllegalStateException e) {
-                bindingResult.rejectValue("memberId",  e.getMessage());
-                return "members/addForm";
-            }
+        //예외 처리 (중복 아이디 처리)
+        try {
+            memberService.join(member);
+            return "redirect:/members/addSuccess";
+        } catch (IllegalStateException e) {
+            bindingResult.rejectValue("memberId", null, e.getMessage());
+            return "members/addForm";
         }
+    }
 
     @GetMapping(value = "/addSuccess")
-    public String goToSignInSuccessPage(){
-           return "members/addFormSuccess";
-        }
+    public String goToSignInSuccessPage() {
+        return "members/addFormSuccess";
+    }
 
     @GetMapping(value = "/{memberId}/update")
     public String goToUpdatePage(@PathVariable("memberId") String memberId, Model model) {
         Member member = memberService.findMemberInfo(memberId);
-        model.addAttribute("memberUpdateForm",memberConverter.MembertoUpdateForm(member));
+        model.addAttribute("memberUpdateForm", memberConverter.MembertoUpdateForm(member));
         return "members/updateForm";
     }
 
@@ -78,7 +78,7 @@ public class MemberController {
         }
         //필드 에러1 (비밀번호와 비밀번호 확인이 일치하지 않는 경우)
         if (!memberUpdateForm.getMemberPw().equals(memberUpdateForm.getMemberPw2())) {
-            bindingResult.rejectValue("memberPw2", null,"비밀번호가 일치하지 않습니다.");
+            bindingResult.rejectValue("memberPw2", null, "비밀번호가 일치하지 않습니다.");
             return "members/updateForm";
         }
 
@@ -91,15 +91,15 @@ public class MemberController {
     }
 
     @GetMapping(value = "/{memberId}/delete")
-    public String goToDeletePage(@PathVariable("memberId") String memberId, Model model){
-        model.addAttribute("memberDeleteForm",new MemberDeleteForm());
+    public String goToDeletePage(@PathVariable("memberId") String memberId, Model model) {
+        model.addAttribute("memberDeleteForm", new MemberDeleteForm());
         return "members/deleteForm";
     }
 
 
-
     @PostMapping(value = "/{memberId}/delete")
-    public String deleteMember(@PathVariable("memberId") String memberId, @ModelAttribute MemberDeleteForm memberDeleteForm, BindingResult bindingResult, HttpServletRequest request){
+
+    public String deleteMember(@PathVariable("memberId") String memberId, @ModelAttribute MemberDeleteForm memberDeleteForm, BindingResult bindingResult, HttpServletRequest request) {
 
         if (bindingResult.hasErrors()) {
             log.info("errors={}", bindingResult);
@@ -107,35 +107,33 @@ public class MemberController {
         }
         //필드 에러1 (비밀번호와 비밀번호 확인이 일치하지 않는 경우)
         if (!memberDeleteForm.getMemberPw().equals(memberDeleteForm.getMemberPw2())) {
-            bindingResult.rejectValue("memberPw2",null, "비밀번호가 일치하지 않습니다.");
+            bindingResult.rejectValue("memberPw2", null, "비밀번호가 일치하지 않습니다.");
             return "members/deleteForm";
         }
 
 
-            log.info("{} 컨트롤러 진입 ", memberDeleteForm);
+        log.info("{} 컨트롤러 진입 ", memberDeleteForm);
 
         //예외 처리 (회원 아이디의 비밀번호가 일치하지 않을 경우)
-            try {
-                memberService.withdraw(memberDeleteForm.getMemberId(), memberDeleteForm.getMemberPw2());
-                HttpSession session = request.getSession(false);
-                session.invalidate();
-                return "redirect:/members/deleteSuccess";
-            }catch (IllegalStateException e){
-                bindingResult.rejectValue("memberPw",  e.getMessage());
-                return "members/deleteForm";
-         }
+        try {
+            memberService.withdraw(memberDeleteForm.getMemberId(), memberDeleteForm.getMemberPw2());
+            HttpSession session = request.getSession(false);
+            session.invalidate();
+            return "redirect:/members/deleteSuccess";
+        } catch (IllegalStateException e) {
+            bindingResult.rejectValue("memberPw", e.getMessage());
+            return "members/deleteForm";
+        }
     }
 
     @GetMapping(value = "/deleteSuccess")
-    public String goToDeleteSuccessPage(){
+    public String goToDeleteSuccessPage() {
         return "members/deleteFormSuccess";
     }
 
 
- 
-
-    @GetMapping(value ="/admin/members")
-    public String goToMemberListPage(Model model){
+    @GetMapping(value = "/admin/members")
+    public String goToMemberListPage(Model model) {
         List<Member> members = memberService.findAllMembers();
         model.addAttribute("members", members);
         return "members/memberList";

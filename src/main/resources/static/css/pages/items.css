@@ -1,0 +1,37 @@
+#item__main{
+    position: relative;
+    width: 100vh;
+}
+.item__category{
+    position: relative;
+    padding: 2rem 0 4rem 0;
+}
+.item__category__text{
+    text-align: center;
+}
+.item__add{
+    position: absolute;
+    top: 2.5rem;
+    left:55%;
+    text-align: end;
+    color: black;
+    font-size: 0.8rem;
+}
+.item__add__container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.itemAddButton__container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.btns--itemadd{
+    width: 20%;
+}
+
+.textarea{
+    height: 15rem;
+    padding: 0.5rem;
+}

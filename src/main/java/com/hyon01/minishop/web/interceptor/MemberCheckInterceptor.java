@@ -28,9 +28,16 @@ public class MemberCheckInterceptor implements HandlerInterceptor {
 
         //현재 사용자의 ID와 요청된 멤버ID가 다르면 정보 차단
         if(requestedMemberId!=null && !currentId.equals(requestedMemberId)){
-        log.warn("{}로부터 {} 정보에 잘못된 접근을 요청", currentId,requestedMemberId);
-        response.sendError(HttpServletResponse.SC_NOT_FOUND);
-        return false;
+            log.warn("{}로부터 {} 정보에 잘못된 접근을 요청", currentId,requestedMemberId);
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return false;
+        }
+
+        //일반 멤버 일시 상품 접근 정보 차단
+        if(member.getMemberLevel() == 1 && path[1].equals("item")){
+            log.warn("{}로부터 {} 정보에 잘못된 접근을 요청", currentId,requestedMemberId);
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return false;
         }
 
         return true;

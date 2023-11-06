@@ -46,6 +46,7 @@ header {
 .header__menu__user:hover {
   color: var(--color-mint);
 }
+
 .header__toggle {
   display: none;
 }

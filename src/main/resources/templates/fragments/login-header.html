@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="ko">
+<header th:if="${session.loginMember != null}" th:fragment="login-header">
+    <div class="header__logo">
+        <a href="/"
+        ><img
+                class="header__logo__img"
+                src="/images/favicon.png"
+                alt="shopping mall logo"
+        /></a>
+    </div>
+    <nav class="header__nav">
+        <ul class="header__menus__insta loginhome__menus__insta">
+            <li>
+                <a
+                        class="header__menu__insta"
+                        href="https://www.instagram.com/iamnotpartypeople/?img_index=1"
+                ><i class="fa-brands fa-instagram"></i
+                ></a>
+            </li>
+        </ul>
+        <ul class="header__menus__main loginhome__menus__main">
+            <li><a class="header__menu__main" href="/">Home</a></li>
+            <li><a class="header__menu__main" id="menu--Outer" href="/items/outers">Outer</a></li>
+            <li><a class="header__menu__main" id="menu--Inner" href="/items/inners">Inner</a></li>
+            <li><a class="header__menu__main" id="menu--Pants" href="/items/pants">Pants</a></li>
+            <li>
+                <a class="header__menu__main" id="menu--Accessories" href="/items/accessories"
+                >Accessories</a
+                >
+            </li>
+            <li><a class="header__menu__main" id="menu--FAQ" href="/faq">FAQ</a></li>
+        </ul>
+        <ul class="header__menus__user">
+            <li>
+                <a class="header__menu__user" href=""
+                ><i class="fa-solid fa-cart-shopping"></i
+                ></a>
+            </li>
+            <li>
+                <a class="header__menu__user" href=""
+                ><i class="fa-solid fa-shirt"></i></a>
+            </li>
+            <li>
+                <a class="header__menu__user" th:if="${session.loginMember.getMemberLevel()==0}" th:href="@{|/members/admin/members|}" href="/update"><i class="fa-solid fa-user"></i
+                ></a>
+                <a class="header__menu__user" th:unless="${session.loginMember.getMemberLevel()==0}"  th:href="@{|/members/${session.loginMember.getMemberId()}/update|}" href="/update"><i class="fa-solid fa-user"></i
+                ></a>
+            </li>
+            <li>
+                <a class="header__menu__user"  href="javascript:void(0)" onClick="javascript:logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i></a>
+            </li>
+        </ul>
+        <button class="header__toggle" aria-label="navigation menu toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <div class="divider divider--white"></div>
+    <div class="divider divider--mint"></div>
+</header>

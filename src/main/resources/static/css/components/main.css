@@ -1,13 +1,17 @@
+main{
+  padding: 9.75rem 0 0 0;
+}
+
 #main {
   text-align: center;
   background-color: var(--color-white);
-  padding: 9.75rem 0 0 0;
+
 }
 .main-image {
   width: 100%;
 }
 @media screen and (max-width: 768px) {
-  #main {
+  main{
     padding: 0;
   }
 }

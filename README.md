@@ -23,7 +23,7 @@ Spring Boot Frameworkを活用して練習するミニプロジェクト。
 - Oracle 
 
 ツール
-- [IntelliJ IDEA Ultimate] (https://www.jetbrains.com/ko-kr/) - コードエディタ
+- [IntelliJ IDEA Ultimate](https://www.jetbrains.com/ko-kr/) - コードエディタ
 - [Visual Studio Code (VSCODE)](https://code.visualstudio.com/) - コードエディタ
 
 著者
